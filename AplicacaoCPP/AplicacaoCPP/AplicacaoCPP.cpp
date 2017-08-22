@@ -14,9 +14,9 @@ void fibonacci()
 		auxiliar,
 		limite;
 
-	cout << "Digite um número: ";
+	cout << "Digite um nÃºmero: ";
 	cin >> limite;
-	cout << "Série Fibonacci de " << limite << "." << endl;
+	cout << "SÃ©rie Fibonacci de " << limite << "." << endl;
 	cout << primeiroValor << ", " << segundoValor;
 
 	for (int contador = 0; contador < limite - 2; contador++) {
@@ -44,7 +44,7 @@ void calcularMediaEExibirAcima() {
 	}
 
 	media = soma / TAMANHO;
-	cout << endl << "Valores que estão acima da média: (" << media << ")" << endl;
+	cout << endl << "Valores que estÃ£o acima da mÃ©dia: (" << media << ")" << endl;
 	for (int posicao = 0; posicao < TAMANHO; posicao++)
 		if (arrayInteiro[posicao] > media)
 			cout << arrayInteiro[posicao] << ", ";
@@ -79,6 +79,118 @@ void diagonalPrincipalComUm() {
 	cout << endl;
 	system("pause");
 }
+
+void bubblesortEmMatriz()
+{
+	srand(time(0));
+	const int TAMANHO = 5;
+	int matriz[TAMANHO][TAMANHO] = { 0 };
+	int vetorAuxiliar[TAMANHO * TAMANHO];
+
+	for (int linha = 0; linha < TAMANHO; linha++) {
+		cout << "| ";
+		for (int coluna = 0; coluna < TAMANHO; coluna++) {
+			matriz[linha][coluna] = rand() % 101;
+			cout << matriz[linha][coluna] << "| ";
+		}
+		cout << endl;
+	}
+
+	cout << endl << "Em ordem crescente" << endl;
+	for (int linha = 0; linha < TAMANHO; linha++)
+		for (int coluna = 0; coluna < TAMANHO; coluna++)
+			vetorAuxiliar[(linha * TAMANHO) + coluna] = matriz[linha][coluna];
+
+	for (int contador = 0; contador < TAMANHO * TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO * TAMANHO - 1; indice++)
+			if (vetorAuxiliar[indice] > vetorAuxiliar[indice + 1]) {
+				int auxiliar = vetorAuxiliar[indice];
+				vetorAuxiliar[indice] = vetorAuxiliar[indice + 1];
+				vetorAuxiliar[indice + 1] = auxiliar;
+			}
+
+	for (int linha = 0; linha < TAMANHO; linha++)
+		for (int coluna = 0; coluna < TAMANHO; coluna++)
+			matriz[linha][coluna] = vetorAuxiliar[(linha * TAMANHO) + coluna];
+
+	for (int linha = 0; linha < TAMANHO; linha++) {
+		cout << "| ";
+		for (int coluna = 0; coluna < TAMANHO; coluna++) {
+			cout << matriz[linha][coluna] << "| ";
+		}
+		cout << endl;
+	}
+
+	cout << endl << "Em ordem decrescente" << endl;
+
+	for (int contador = 0; contador < TAMANHO * TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO * TAMANHO - 1; indice++)
+			if (vetorAuxiliar[indice] < vetorAuxiliar[indice + 1]) {
+				int auxiliar = vetorAuxiliar[indice];
+				vetorAuxiliar[indice] = vetorAuxiliar[indice + 1];
+				vetorAuxiliar[indice + 1] = auxiliar;
+			}
+
+	for (int linha = 0; linha < TAMANHO; linha++)
+		for (int coluna = 0; coluna < TAMANHO; coluna++)
+			matriz[linha][coluna] = vetorAuxiliar[(linha * TAMANHO) + coluna];
+
+	for (int linha = 0; linha < TAMANHO; linha++) {
+		cout << "| ";
+		for (int coluna = 0; coluna < TAMANHO; coluna++) {
+			cout << matriz[linha][coluna] << "| ";
+		}
+		cout << endl;
+	}
+
+
+	cout << endl;
+}
+
+void bubblesortEmVetor()
+{
+	srand(time(0));
+	const int TAMANHO = 50;
+	int valores[TAMANHO] = { 0 };
+
+	for (int indice = 0; indice < TAMANHO; indice++) {
+		valores[indice] = rand() % 101;
+		cout << valores[indice] << ", ";
+	}
+
+	cout << endl << "Em ordem crescente" << endl;
+
+	for (int contador = 0; contador < TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO - 1; indice++)
+			if (valores[indice] > valores[indice + 1]) {
+				int auxiliar = valores[indice];
+				valores[indice] = valores[indice + 1];
+				valores[indice + 1] = auxiliar;
+			}
+
+	for (int indice = 0; indice < TAMANHO; indice++) {
+		cout << valores[indice] << ", ";
+	}
+
+	cout << endl << "Em ordem decrescente" << endl;
+
+	for (int contador = 0; contador < TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO - 1; indice++)
+			if (valores[indice] < valores[indice + 1]) {
+				int auxiliar = valores[indice];
+				valores[indice] = valores[indice + 1];
+				valores[indice + 1] = auxiliar;
+			}
+
+	for (int indice = 0; indice < TAMANHO; indice++) {
+		cout << valores[indice] << ", ";
+	}
+
+
+	cout << endl;
+}
+
+
 
 int main()
 {
