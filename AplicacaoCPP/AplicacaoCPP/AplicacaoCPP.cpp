@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -54,7 +55,7 @@ void calcularMediaEExibirAcima() {
 }
 
 void diagonalPrincipalComUm() {
-	const int	
+	const int
 		LINHAS = 3,
 		COLUNAS = 3;
 
@@ -75,17 +76,95 @@ void diagonalPrincipalComUm() {
 
 		cout << endl;
 	}
-		
+
 	cout << endl;
 	system("pause");
 }
 
+int numeroGlobal = 10;
+
+int somaCom10(int numero) {
+	int valor = 10;
+	return numero + 10;
+}
+
+int somaComTres(int numero)
+{
+	return numero + 3;
+}
+
+
+int valor = 5;
+
+void escreverValor(int valor2 = 0, int valor3 = 10)
+{
+	cout << "Valor escrito pela funcao: " << valor2 << endl;
+}
+
+void escreverValor(bool teste)
+{
+	cout << teste;
+}
+
+int funcao();
+int funcao(int a);
+float funcao(double a);
+int funcao(int a, double b);
+
+
+template <typename T>
+T Maior(T valor1, T Valor2) {
+	T maior;
+	if (valor1 > valor2)
+		maior = valor1;
+	else
+		maior = valor2;
+
+	return maior;
+}
+
+template <typename T>
+void escreva(T valor) {
+	cout << valor;
+}
+
+template <typename T>
+void leia(T &valor) {
+	cin >> valor;
+}
+
+template <typename T>
+T maior(T valor1, T valor2){
+	T maiorValor;
+	if (valor1 > valor2)
+		maiorValor = valor1;
+	else
+		maiorValor = valor2;
+
+	return maiorValor;
+}
+
+template <typename T>
+T bubblesort(T array[], int tamanho) {
+	return array[0];
+}
+
 int main()
 {
-	setlocale(LC_ALL, "Portuguese");
-	//fibonacci();
-	//calcularMediaEExibirAcima();
-	//diagonalPrincipalComUm();
+	maior<int>(1, 10);
+	maior<double>(3.5, 3.9);
+	maior<string>("a", "b");
+	
+	int array[] = { 1,2,3 };
+	bubblesort<int>(array, 3);
+	bubblesort<string>(array, 3);
+
+	escreva(10);
+	escreva("teste");
+	int x = 0;
+	leia<int>(x);
+	double resultado = maior(1.5, 1.9);
+
 	return 0;
 }
 
