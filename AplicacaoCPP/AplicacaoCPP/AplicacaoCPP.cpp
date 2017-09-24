@@ -15,9 +15,9 @@ void fibonacci()
 		auxiliar,
 		limite;
 
-	cout << "Digite um número: ";
+	cout << "Digite um nÃºmero: ";
 	cin >> limite;
-	cout << "Série Fibonacci de " << limite << "." << endl;
+	cout << "SÃ©rie Fibonacci de " << limite << "." << endl;
 	cout << primeiroValor << ", " << segundoValor;
 
 	for (int contador = 0; contador < limite - 2; contador++) {
@@ -45,7 +45,7 @@ void calcularMediaEExibirAcima() {
 	}
 
 	media = soma / TAMANHO;
-	cout << endl << "Valores que estão acima da média: (" << media << ")" << endl;
+	cout << endl << "Valores que estÃ£o acima da mÃ©dia: (" << media << ")" << endl;
 	for (int posicao = 0; posicao < TAMANHO; posicao++)
 		if (arrayInteiro[posicao] > media)
 			cout << arrayInteiro[posicao] << ", ";
@@ -81,73 +81,117 @@ void diagonalPrincipalComUm() {
 	system("pause");
 }
 
-int numeroGlobal = 10;
-
-int somaCom10(int numero) {
-	int valor = 10;
-	return numero + 10;
-}
-
-int somaComTres(int numero)
+void bubblesortEmMatriz()
 {
-	return numero + 3;
+	srand(time(0));
+	const int TAMANHO = 5;
+	int matriz[TAMANHO][TAMANHO] = { 0 };
+	int vetorAuxiliar[TAMANHO * TAMANHO];
+
+	for (int linha = 0; linha < TAMANHO; linha++) {
+		cout << "| ";
+		for (int coluna = 0; coluna < TAMANHO; coluna++) {
+			matriz[linha][coluna] = rand() % 101;
+			cout << matriz[linha][coluna] << "| ";
+		}
+		cout << endl;
+	}
+
+	cout << endl << "Em ordem crescente" << endl;
+	for (int linha = 0; linha < TAMANHO; linha++)
+		for (int coluna = 0; coluna < TAMANHO; coluna++)
+			vetorAuxiliar[(linha * TAMANHO) + coluna] = matriz[linha][coluna];
+
+	for (int contador = 0; contador < TAMANHO * TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO * TAMANHO - 1; indice++)
+			if (vetorAuxiliar[indice] > vetorAuxiliar[indice + 1]) {
+				int auxiliar = vetorAuxiliar[indice];
+				vetorAuxiliar[indice] = vetorAuxiliar[indice + 1];
+				vetorAuxiliar[indice + 1] = auxiliar;
+			}
+
+	for (int linha = 0; linha < TAMANHO; linha++)
+		for (int coluna = 0; coluna < TAMANHO; coluna++)
+			matriz[linha][coluna] = vetorAuxiliar[(linha * TAMANHO) + coluna];
+
+	for (int linha = 0; linha < TAMANHO; linha++) {
+		cout << "| ";
+		for (int coluna = 0; coluna < TAMANHO; coluna++) {
+			cout << matriz[linha][coluna] << "| ";
+		}
+		cout << endl;
+	}
+
+	cout << endl << "Em ordem decrescente" << endl;
+
+	for (int contador = 0; contador < TAMANHO * TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO * TAMANHO - 1; indice++)
+			if (vetorAuxiliar[indice] < vetorAuxiliar[indice + 1]) {
+				int auxiliar = vetorAuxiliar[indice];
+				vetorAuxiliar[indice] = vetorAuxiliar[indice + 1];
+				vetorAuxiliar[indice + 1] = auxiliar;
+			}
+
+	for (int linha = 0; linha < TAMANHO; linha++)
+		for (int coluna = 0; coluna < TAMANHO; coluna++)
+			matriz[linha][coluna] = vetorAuxiliar[(linha * TAMANHO) + coluna];
+
+	for (int linha = 0; linha < TAMANHO; linha++) {
+		cout << "| ";
+		for (int coluna = 0; coluna < TAMANHO; coluna++) {
+			cout << matriz[linha][coluna] << "| ";
+		}
+		cout << endl;
+	}
+
+
+	cout << endl;
 }
 
-
-int valor = 5;
-
-void escreverValor(int valor2 = 0, int valor3 = 10)
+void bubblesortEmVetor()
 {
-	cout << "Valor escrito pela funcao: " << valor2 << endl;
+	srand(time(0));
+	const int TAMANHO = 50;
+	int valores[TAMANHO] = { 0 };
+
+	for (int indice = 0; indice < TAMANHO; indice++) {
+		valores[indice] = rand() % 101;
+		cout << valores[indice] << ", ";
+	}
+
+	cout << endl << "Em ordem crescente" << endl;
+
+	for (int contador = 0; contador < TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO - 1; indice++)
+			if (valores[indice] > valores[indice + 1]) {
+				int auxiliar = valores[indice];
+				valores[indice] = valores[indice + 1];
+				valores[indice + 1] = auxiliar;
+			}
+
+	for (int indice = 0; indice < TAMANHO; indice++) {
+		cout << valores[indice] << ", ";
+	}
+
+	cout << endl << "Em ordem decrescente" << endl;
+
+	for (int contador = 0; contador < TAMANHO - 1; contador++)
+		for (int indice = 0; indice < TAMANHO - 1; indice++)
+			if (valores[indice] < valores[indice + 1]) {
+				int auxiliar = valores[indice];
+				valores[indice] = valores[indice + 1];
+				valores[indice + 1] = auxiliar;
+			}
+
+	for (int indice = 0; indice < TAMANHO; indice++) {
+		cout << valores[indice] << ", ";
+	}
+
+
+	cout << endl;
 }
 
-void escreverValor(bool teste)
-{
-	cout << teste;
-}
 
-int funcao();
-int funcao(int a);
-float funcao(double a);
-int funcao(int a, double b);
-
-
-template <typename T>
-T Maior(T valor1, T Valor2) {
-	T maior;
-	if (valor1 > valor2)
-		maior = valor1;
-	else
-		maior = valor2;
-
-	return maior;
-}
-
-template <typename T>
-void escreva(T valor) {
-	cout << valor;
-}
-
-template <typename T>
-void leia(T &valor) {
-	cin >> valor;
-}
-
-template <typename T>
-T maior(T valor1, T valor2){
-	T maiorValor;
-	if (valor1 > valor2)
-		maiorValor = valor1;
-	else
-		maiorValor = valor2;
-
-	return maiorValor;
-}
-
-template <typename T>
-T bubblesort(T array[], int tamanho) {
-	return array[0];
-}
 
 int main()
 {
