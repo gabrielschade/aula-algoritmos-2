@@ -9,26 +9,40 @@ using namespace std;
 Constante para identificar as cercas
 */
 const char CERCA = '#';
+
 /*
 Constante para identiciar um espaço vazio
 */
 const char VAZIO = '\0';
+
 /*
 Constante para identificar um vírus
 */
 const char VIRUS = 'X';
+
+/*
+Constante para identificar um vírus
+*/
+const char CERCA_TEMPORARIA = '$';
+
+
+
 /*
 Constante para identificar o tamanho de campo pequeno
 */
 const int TAMANHO_PEQUENO = 1;
+
 /*
 Constante para identificar o tamanho de campo médio
 */
 const int TAMANHO_MEDIO = 2;
+
 /*
 Constante para identificar o tamanho de campo grande
 */
 const int TAMANHO_GRANDE = 3;
+
+
 
 /*
 Constante para definir a quantidade de colunas de todos os campos
@@ -49,6 +63,7 @@ const int QUANTIDADE_LINHAS_PARA_MEDIOS = 15;
 Constante para definir a quantidade de linhas dos campos grandes
 */
 const int QUANTIDADE_LINHAS_PARA_GRANDES = 25;
+
 /*
 Campo pequeno com os valores inciais
 */
@@ -116,6 +131,8 @@ char campoGrande[QUANTIDADE_LINHAS_PARA_GRANDES][QUANTIDADE_COLUNAS] = {
 	{ CERCA, VAZIO, VAZIO, VAZIO, VAZIO, CERCA, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, CERCA, VAZIO, VAZIO,VAZIO,CERCA },
 	{ CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA, CERCA,CERCA,CERCA }
 };
+
+
 
 /*
 Função para escrever os valores contidos em um campo, deve ser utilizado para exibir o campo para o usuário
