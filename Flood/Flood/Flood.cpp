@@ -44,6 +44,11 @@ int main()
 		 << endl;
 	cin  >> velocidade;
 
+	while (velocidade < 1 || velocidade > 2) {
+		cout << "Opção inválida. Favor selecionar novamente." << endl;
+		cin >> velocidade;
+	}
+
 	if (tipoDeTeste == 1) {
 		cout << "\n\n\n" << "1º PASSO: posicionamento das cercas.\n" << endl;
 		escreverUmDosCampos(tamanho);
@@ -53,7 +58,7 @@ int main()
 				cout << "\nPOSICIONAR CERCA: Entre com valor de linha e valor de coluna separadamente." << endl;
 				cin  >> linha;
 				cin  >> coluna;
-				while (verificarPosicaoLivre(linha, coluna, tamanho) == false) {
+				while (!verificarPosicaoLivre(linha, coluna, tamanho)) {
 					cout << "\nPosição selecionada encontra-se ocupada ou é inválida. Favor selecionar outra." << endl;
 					cin >> linha;
 					cin >> coluna;
@@ -68,7 +73,7 @@ int main()
 				cout << "POSICIONAR CERCA: Entre com valor de linha e valor de coluna separadamente." << endl;
 				cin  >> linha;
 				cin  >> coluna;
-				while (verificarPosicaoLivre(linha, coluna, tamanho) == false) {
+				while (!verificarPosicaoLivre(linha, coluna, tamanho)) {
 					cout << "Posição selecionada encontra-se ocupada. Favor selecionar outra." << endl;
 					cin >> linha;
 					cin >> coluna;
@@ -79,10 +84,51 @@ int main()
 			}
 		}
 
-		//virus ataca aqui
+		cout << "\n\n\n" << "2º PASSO: a propagação do vírus."
+			 << "\n\n" << "Escolha a posição inicial do vírus:" << endl;
+		cin  >> linha;
+		cin  >> coluna;
+
+		if (tamanho == 1) {
+			virus(linha, coluna, campoPequeno, velocidade, tamanho);
+		}
+		else if (tamanho == 2) {
+			virus(linha, coluna, campoMedio, velocidade, tamanho);
+		}
+		else {
+			virus(linha, coluna, campoGrande, velocidade, tamanho);
+		}
+
+		escreverUmDosCampos(tamanho);
 	}
 	else {
-		//nada ainda
+		cout << "\n\n\n" << "As cercas foram posicionadas da seguinte forma:\n" << endl;
+		if (tamanho == 1) {
+			colocarCercasTemporarias(campoPequeno, MAXIMO_PARA_PEQUENO, QUANTIDADE_LINHAS_PARA_MENORES);
+			escreverUmDosCampos(tamanho);
+		}
+		else if (tamanho == 2) {
+			colocarCercasTemporarias(campoMedio, MAXIMO_PARA_MEDIO_GRANDE, QUANTIDADE_LINHAS_PARA_MEDIOS);
+			escreverUmDosCampos(tamanho);
+		}
+		else {
+			colocarCercasTemporarias(campoGrande, MAXIMO_PARA_MEDIO_GRANDE, QUANTIDADE_LINHAS_PARA_GRANDES);
+			escreverUmDosCampos(tamanho);
+		}
+
+		cout << "\n\n\n" << "O vírus começa a se espalhar pelo mapa em 5 focos diferentes...\n" << endl;
+		
+		if (tamanho == 1) {
+			rodarVirusNosPontosAleatorios(campoPequeno, QUANTIDADE_LINHAS_PARA_MENORES, velocidade, tamanho);
+		}
+		else if (tamanho == 2) {
+			rodarVirusNosPontosAleatorios(campoMedio, QUANTIDADE_LINHAS_PARA_MEDIOS, velocidade, tamanho);
+		}
+		else {
+			rodarVirusNosPontosAleatorios(campoGrande, QUANTIDADE_LINHAS_PARA_GRANDES, velocidade, tamanho);
+		}
+
+		escreverUmDosCampos(tamanho);
 	}
 
 	system("pause");

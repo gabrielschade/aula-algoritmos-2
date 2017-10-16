@@ -27,6 +27,12 @@
     <ClInclude Include="Flood.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="virus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cercasTemporarias.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
