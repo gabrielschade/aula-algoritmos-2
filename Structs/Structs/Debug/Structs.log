@@ -1,0 +1,4 @@
+﻿  Structs.cpp
+d:\documentos\github\aula-algoritmos-2\structs\structs\structs.cpp(240): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Structs.vcxproj -> D:\Documentos\GitHub\aula-algoritmos-2\Structs\Debug\Structs.exe
+  Structs.vcxproj -> D:\Documentos\GitHub\aula-algoritmos-2\Structs\Debug\Structs.pdb (Partial PDB)
