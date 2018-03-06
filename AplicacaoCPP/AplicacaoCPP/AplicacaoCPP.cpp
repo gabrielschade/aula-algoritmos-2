@@ -9,7 +9,7 @@
 using namespace std;
 
 void fibonacci()
-{
+{ 
 	int primeiroValor = 0,
 		segundoValor = 1,
 		auxiliar,
