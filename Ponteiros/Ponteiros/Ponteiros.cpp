@@ -10,7 +10,7 @@ using namespace std;
 void trocar(int *ponteiro1, int *ponteiro2)
 {
 	int valor1 = *ponteiro1;
-	valor1 += 10;
+	valor1 += 10; 
 }
 
 //int main()
